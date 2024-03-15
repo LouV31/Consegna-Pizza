@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Pizzeria_InForno.Models.Ingredienti>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="myTextColor mb-3">Ingredienti</h1>
+
+<div class="d-flex">
+<p>
+        <a asp-action="Create" class="btn btn-sm btn-success me-3">Create New</a>
+</p>
+    <p>
+        <a asp-action="Index" asp-controller="Articoli" class="btn btn-sm btn-outline-danger me-3">Torna alla gesione Articoli</a>
+    </p>
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeIngrediente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeIngrediente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezzo)
+            </td>
+            <td>
+                    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.IdIngrediente">Edit</a> 
+                    <a class="btn btn-sm btn-warning" asp-action="Details" asp-route-id="@item.IdIngrediente">Details</a> 
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdIngrediente">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
